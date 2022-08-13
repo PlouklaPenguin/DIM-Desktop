@@ -221,10 +221,7 @@ export default function Sheet({
         return;
       }
 
-      if (
-        dragHandle.current?.contains(e.target as Node) ||
-        sheetContents.current!.scrollTop === 0
-      ) {
+      if (dragHandle.current?.contains(e.target as Node)) {
         dragging.current = true;
       }
     },

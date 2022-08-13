@@ -1,0 +1,23 @@
+@use '../../variables.scss' as *;
+
+.over {
+  border-color: $orange !important;
+  color: $orange;
+}
+
+.dropContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.drop {
+  border: 1px solid white;
+  height: calc(var(--item-size) + ((var(--item-size) / 5) + 4px) - 1px);
+  width: var(--item-size);
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dragOver {
+  visibility: hidden;
+}
