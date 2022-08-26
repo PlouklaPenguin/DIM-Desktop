@@ -62,6 +62,11 @@ interface Props {
    * item popup don't close the popup they were spawned from!
    */
   allowClickThrough?: boolean;
+  /**
+   * Enables the ability click anywhere and drag the sheet down/up when the sheets contents are scrolled to the top.
+   * Defaults to true.
+   */
+  enableContentScrollTopDrag?: boolean;
   onClose(): void;
 }
 
@@ -110,6 +115,7 @@ export default function Sheet({
   zIndex,
   freezeInitialHeight,
   allowClickThrough,
+  enableContentScrollTopDrag = true,
   onClose,
 }: Props) {
   const reducedMotion = Boolean(useReducedMotion());
@@ -221,11 +227,14 @@ export default function Sheet({
         return;
       }
 
-      if (dragHandle.current?.contains(e.target as Node)) {
+      if (
+        dragHandle.current?.contains(e.target as Node) ||
+        (enableContentScrollTopDrag && sheetContents.current!.scrollTop === 0)
+      ) {
         dragging.current = true;
       }
     },
-    []
+    [enableContentScrollTopDrag]
   );
 
   const dragHandleUp = useCallback(() => (dragging.current = false), []);

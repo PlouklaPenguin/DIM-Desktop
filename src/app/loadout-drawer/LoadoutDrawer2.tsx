@@ -228,6 +228,7 @@ export default function LoadoutDrawer2({
       footer={footer}
       disabled={showingItemPicker}
       allowClickThrough
+      enableContentScrollTopDrag={false}
     >
       <LoadoutDrawerDropTarget
         onDroppedItem={onAddItem}

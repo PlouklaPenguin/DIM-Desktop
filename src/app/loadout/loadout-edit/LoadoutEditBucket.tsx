@@ -294,17 +294,19 @@ function ItemBucket({
           {addUnequipped}
         </div>
       ) : (
-        <div className={styles.unequipped}>
-          <LoadoutEditItemDropTarget
-            bucket={bucket}
-            classType={classType}
-            equippedItems={equipped}
-            unequippedItems={unequipped}
-            equip={false}
-          >
-            {addUnequipped}
-          </LoadoutEditItemDropTarget>
-        </div>
+        addUnequipped && (
+          <div className={styles.unequipped}>
+            <LoadoutEditItemDropTarget
+              bucket={bucket}
+              classType={classType}
+              equippedItems={equipped}
+              unequippedItems={unequipped}
+              equip={false}
+            >
+              {addUnequipped}
+            </LoadoutEditItemDropTarget>
+          </div>
+        )
       )}
     </div>
   );

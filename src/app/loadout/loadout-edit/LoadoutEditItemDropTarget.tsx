@@ -3,6 +3,7 @@ import { DimItem } from 'app/inventory/item-types';
 import { storesSelector } from 'app/inventory/selectors';
 import { ResolvedLoadoutItem } from 'app/loadout-drawer/loadout-types';
 import { singularBucketHashes } from 'app/loadout-drawer/loadout-utils';
+import { AppIcon, equippedIcon, unequippedIcon } from 'app/shell/icons';
 import { itemCanBeInLoadout } from 'app/utils/item-utils';
 import { DestinyClass } from 'bungie-api-ts/destiny2';
 import clsx from 'clsx';
@@ -64,7 +65,9 @@ export default function LoadoutEditItemDropTarget({
           className={clsx(styles.drop, {
             [styles.over]: isOver,
           })}
-        />
+        >
+          <AppIcon icon={equip ? equippedIcon : unequippedIcon} />
+        </div>
       )}
       {!canDrop && <div className={clsx({ [styles.dragOver]: canDrop })}>{children}</div>}
     </div>
