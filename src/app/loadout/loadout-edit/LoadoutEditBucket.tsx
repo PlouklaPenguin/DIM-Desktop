@@ -142,7 +142,12 @@ export function ArmorExtras({
   );
 }
 
-const DraggableDroppableItem = React.memo(
+/**
+ * An extension of the usual draggable inventory item for loadouts that allows the for
+ * removal of the item from the loadout. This also handles styling for when an item is
+ * missing.
+ */
+const DraggableRemovableLoadoutItem = React.memo(
   ({
     loadoutItem,
     onClickWarnItem,
@@ -238,7 +243,7 @@ function ItemBucket({
           >
             <div className={clsx(styles.items, styles.equippedGrid)}>
               {equipped.map((li) => (
-                <DraggableDroppableItem
+                <DraggableRemovableLoadoutItem
                   key={li.item.id}
                   loadoutItem={li}
                   onClickWarnItem={onClickWarnItem}
@@ -281,7 +286,7 @@ function ItemBucket({
             <div className={clsx(styles.items, styles.unequippedGrid)}>
               {/*  eslint-disable-next-line radar/no-identical-functions */}
               {unequipped.map((li) => (
-                <DraggableDroppableItem
+                <DraggableRemovableLoadoutItem
                   key={li.item.id}
                   loadoutItem={li}
                   onClickWarnItem={onClickWarnItem}

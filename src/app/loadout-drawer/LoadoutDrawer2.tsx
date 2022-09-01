@@ -229,6 +229,10 @@ export default function LoadoutDrawer2({
       disabled={showingItemPicker}
       allowClickThrough
       enableContentScrollTopDrag={false}
+      // Temporary to stop jankiness when the loadout only has equipped armour and the user starts
+      // to drag it down to unequipped from the bottom of the item.
+      // I want to replace this with a frozen content height that users can drag to make bigger
+      freezeInitialHeight
     >
       <LoadoutDrawerDropTarget
         onDroppedItem={onAddItem}
